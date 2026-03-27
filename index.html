@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Narwhal-Inspired Sensing-to-Control | ICRA 2026</title>
+  <meta name="description" content="An end-to-end sensing-to-control pipeline for fixed-wing UAVs: bio-inspired sensing, physics-informed learning, and convex control allocation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-top">
+        <img src="assets/images/caltech-torch.png" alt="Caltech" class="caltech-icon">
+        <span class="venue">ICRA 2026</span>
+      </div>
+      <h1>A Narwhal-Inspired Sensing-to-Control Framework for Small Fixed-Wing Aircraft</h1>
+      <p class="authors">
+        <strong>Fengze Xie</strong><sup>*</sup>,
+        Xiaozhou Fan<sup>*</sup>,
+        Jacob Schuster,
+        Yisong Yue,
+        Morteza Gharib
+      </p>
+      <p class="affiliation">
+        <img src="assets/images/logo-caltech.png" alt="Caltech" class="caltech-wordmark">
+      </p>
+      <div class="hero-links">
+        <a href="https://arxiv.org/pdf/2510.07160" class="btn" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Paper
+        </a>
+        <a href="https://drive.google.com/file/d/1Rev0jDwypZUDwEjBIgWoiBhjwFsCATO9/view?usp=sharing" class="btn" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Video
+        </a>
+        <a href="https://arxiv.org/abs/2510.07160" class="btn btn-outline" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          arXiv
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Teaser -->
+  <section class="teaser">
+    <div class="container">
+      <img src="assets/images/teaser-d.png" alt="Narwhal-inspired UAV: probes sense clean upstream flow before it reaches the airframe">
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section" id="abstract">
+    <div class="container narrow">
+      <h2>Abstract</h2>
+      <p class="abstract-text">
+        We present an end-to-end sensing-to-control pipeline for fixed-wing UAVs combining bio-inspired hardware, physics-informed dynamics learning, and convex control allocation. Inspired by the narwhal's tusk, we mount multi-hole probes upstream of the airframe to sense "clean" airflow, reducing force-estimation error by 25&ndash;30%. A control-affine model with soft left&ndash;right symmetry regularization maps probe readings and sparse wing pressures to aerodynamic wrenches. Wind-tunnel experiments show the proposed model degrades only ~12% under distribution shift versus 44% for an unstructured baseline, with 27&ndash;34% lower tracking error.
+      </p>
+    </div>
+  </section>
+
+  <!-- Hardware -->
+  <section class="section section-alt" id="hardware">
+    <div class="container">
+      <h2>Hardware</h2>
+      <figure>
+        <img src="assets/images/expr_setup.png" alt="Instrumented fixed-wing UAV and wind-tunnel setup">
+        <figcaption>(A) 1.2 m wingspan aircraft with dual multi-hole probes, 7 wing pressure taps, and onboard Jetson Orin Nano. (B) Wind-tunnel rig with two-axis rotation bed, force transducer, and gust generator. (C) Multi-hole probe detail.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section class="section" id="method">
+    <div class="container">
+      <h2>Method</h2>
+      <figure class="figure-pipeline">
+        <img src="assets/images/algorithm_flowchart.png" alt="Sensing-to-control pipeline">
+      </figure>
+      <div class="method-grid">
+        <div class="method-card">
+          <h3>Pitot Tube Calibration</h3>
+          <p>Data-driven mapping from normalized probe pressures to airspeed and flow angles (V<sub>a</sub>, &alpha;, &beta;), robust across operating conditions.</p>
+        </div>
+        <div class="method-card">
+          <h3>Physics-Informed Learning</h3>
+          <p>Control-affine model <em>y = A<sub>&phi;</sub>(o) + B<sub>&phi;</sub>(o)u</em> with soft symmetry regularizer to resolve flaperon&ndash;wing-pressure confounding.</p>
+        </div>
+        <div class="method-card">
+          <h3>Convex Control Allocation</h3>
+          <p>Closed-form regularized least-squares optimizer balancing force tracking, smoothness, and trim adherence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="section section-alt" id="results">
+    <div class="container">
+      <h2>Results</h2>
+
+      <!-- Video -->
+      <div class="video-wrapper">
+        <video id="project-video" controls muted preload="metadata">
+          <source src="assets/videos/narwal-video.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- B heatmap -->
+      <div class="result-block">
+        <h3>Symmetry Regularization</h3>
+        <p>Without regularization the model assigns ~3.8x more lift sensitivity to the left flaperon than the right. The symmetry prior restores physically consistent control effectiveness.</p>
+        <figure>
+          <img src="assets/images/compare_B_heatmap.png" alt="Control effectiveness heatmaps: with vs without symmetry regularization">
+          <figcaption>Control effectiveness B<sup>T</sup>: with symmetry regularization (left) vs. without (right).</figcaption>
+        </figure>
+      </div>
+
+      <!-- Generalization table -->
+      <div class="result-block">
+        <h3>Out-of-Distribution Robustness</h3>
+        <p><em>Unstructured</em> RMSE grows 44% from 10 to 14 m/s. <em>Affine Sym</em> grows only 12%.</p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Wind Speed</th>
+                <th>Affine Sym</th>
+                <th>Affine</th>
+                <th>Unstructured</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>7 m/s</td><td><strong>0.521</strong></td><td>0.531</td><td>0.521</td></tr>
+              <tr><td>9 m/s</td><td>0.495</td><td>0.493</td><td><strong>0.484</strong></td></tr>
+              <tr class="in-dist"><td>10 m/s (train)</td><td>0.522</td><td>0.450</td><td><strong>0.442</strong></td></tr>
+              <tr><td>14 m/s</td><td><strong>0.592</strong></td><td>0.598</td><td>0.637</td></tr>
+            </tbody>
+          </table>
+          <p class="table-note">Estimation RMSE (N / N&middot;m). Bold = best per row.</p>
+        </div>
+      </div>
+
+      <!-- Fz tracking -->
+      <div class="result-block">
+        <h3>Force Tracking at 14 m/s</h3>
+        <p><em>Affine Sym</em> reduces F<sub>z</sub> tracking RMSE by 27% vs. <em>Affine</em> and 34% vs. <em>Unstructured</em>.</p>
+        <figure>
+          <img src="assets/images/fz_compare_grid_color.png" alt="Fz estimation and tracking comparison">
+          <figcaption>Left: open-loop estimation. Right: closed-loop tracking. Top to bottom: Affine Sym, Affine, Unstructured.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Citation -->
+  <section class="section" id="citation">
+    <div class="container narrow">
+      <h2>Citation</h2>
+      <pre class="bibtex"><code>@inproceedings{xie2026narwhal,
+  title={A Narwhal-Inspired Sensing-to-Control Framework for Small Fixed-Wing Aircraft},
+  author={Xie, Fengze and Fan, Xiaozhou and Schuster, Jacob and Yue, Yisong and Gharib, Morteza},
+  booktitle={IEEE International Conference on Robotics and Automation (ICRA)},
+  year={2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <script>
+    const v = document.getElementById('project-video');
+    const S = 86;
+    v.addEventListener('loadedmetadata', () => { v.currentTime = S; });
+    v.addEventListener('timeupdate', () => { if (v.currentTime < S) v.currentTime = S; });
+    v.addEventListener('ended', () => { v.currentTime = S; v.play(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+/* ============================================
+   Narwhal — ICRA 2026 Project Page
+   ============================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #fafaf9;
+  --card: #ffffff;
+  --surface: #f4f3f1;
+  --text: #1a1a1a;
+  --muted: #52575e;
+  --accent: #003B4C;
+  --accent-soft: rgba(0, 59, 76, 0.05);
+  --teal: #005851;
+  --orange: #FF6C0C;
+  --border: rgba(0, 0, 0, 0.07);
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --mono: 'SF Mono', 'Fira Code', Consolas, monospace;
+  --w: 840px;
+  --r: 10px;
+  --t: 0.25s ease;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font: 16px/1.7 var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; transition: color var(--t); }
+a:hover { color: var(--teal); }
+img, video { max-width: 100%; display: block; }
+
+.container { max-width: var(--w); margin: 0 auto; padding: 0 24px; }
+.narrow { max-width: 720px; }
+
+/* ---- Hero ---- */
+.hero {
+  padding: 64px 0 44px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--accent-soft) 0%, var(--bg) 100%);
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.caltech-icon { height: 32px; width: auto; }
+
+.venue {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(0, 88, 81, 0.08);
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+
+.hero h1 {
+  font: 600 clamp(1.35rem, 3.5vw, 2rem)/1.3 var(--serif);
+  max-width: 680px;
+  margin: 0 auto 16px;
+}
+
+.hero .authors {
+  font-size: 0.98rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.hero .authors strong { color: var(--accent); }
+.hero .authors sup { font-size: 0.65em; }
+
+.hero .affiliation { margin-bottom: 24px; }
+.caltech-wordmark { height: 18px; margin: 0 auto; }
+
+.hero-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  transition: background var(--t), transform var(--t), box-shadow var(--t);
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+.btn svg { flex-shrink: 0; }
+.btn:hover { background: var(--teal); color: #fff; transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,.15); }
+
+.btn-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); box-shadow: none; }
+.btn-outline:hover { background: var(--accent); color: #fff; }
+
+/* ---- Teaser ---- */
+.teaser {
+  padding: 36px 0 0;
+}
+.teaser img {
+  border-radius: var(--r);
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(0,0,0,.08);
+}
+
+/* ---- Sections ---- */
+.section { padding: 52px 0; }
+.section-alt { background: var(--surface); }
+
+.section h2 {
+  font: 600 1.4rem var(--serif);
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--orange);
+  display: inline-block;
+}
+
+/* ---- Abstract ---- */
+.abstract-text {
+  font: 400 0.97rem/1.85 var(--serif);
+  background: var(--card);
+  padding: 24px 28px;
+  border-radius: var(--r);
+  border-left: 3px solid var(--orange);
+  box-shadow: 0 1px 6px rgba(0,0,0,.04);
+  color: var(--text);
+}
+
+/* ---- Figures ---- */
+figure { margin-bottom: 8px; }
+
+figure img {
+  border-radius: var(--r);
+  background: var(--card);
+  box-shadow: 0 1px 8px rgba(0,0,0,.05);
+}
+
+figcaption {
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.figure-pipeline img {
+  padding: 12px;
+  margin-bottom: 4px;
+}
+
+/* ---- Method Grid ---- */
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.method-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: var(--r);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  transition: box-shadow var(--t), transform var(--t);
+}
+.method-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.07); transform: translateY(-2px); }
+
+.method-card h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.method-card p {
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* ---- Video ---- */
+.video-wrapper {
+  border-radius: var(--r);
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 3px 20px rgba(0,0,0,.12);
+  margin-bottom: 8px;
+}
+.video-wrapper video { width: 100%; display: block; }
+
+/* ---- Result Blocks ---- */
+.result-block {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.result-block h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.result-block > p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+/* ---- Tables ---- */
+.table-wrapper { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.88rem;
+  background: var(--card);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0,0,0,.05);
+}
+
+thead { background: var(--accent); color: #fff; }
+thead th {
+  padding: 10px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+tbody td {
+  padding: 9px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  font-variant-numeric: tabular-nums;
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: var(--accent-soft); }
+tbody tr.in-dist { background: rgba(0,88,81,.05); }
+tbody tr.in-dist:hover { background: rgba(0,88,81,.09); }
+
+.table-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 6px;
+  opacity: .7;
+}
+
+/* ---- Citation ---- */
+.bibtex {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  font: 0.82rem/1.65 var(--mono);
+  overflow-x: auto;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  position: relative;
+}
+.bibtex::before {
+  content: 'BibTeX';
+  position: absolute;
+  top: 8px; right: 12px;
+  font: 600 0.65rem var(--sans);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  opacity: .4;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 720px) {
+  .method-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 1.3rem; }
+  .hero { padding: 48px 0 36px; }
+  .section { padding: 40px 0; }
+  .abstract-text { padding: 20px; font-size: 0.93rem; }
+  .caltech-icon { height: 26px; }
+}
