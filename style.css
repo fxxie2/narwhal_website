@@ -79,8 +79,13 @@ img, video { max-width: 100%; display: block; }
   line-height: 1.5;
   margin-bottom: 6px;
 }
-.hero .authors strong { color: var(--accent); }
 .hero .authors sup { font-size: 0.65em; }
+
+.equal-contrib {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
 
 .hero .affiliation { margin-bottom: 24px; }
 .caltech-wordmark { height: 18px; margin: 0 auto; }
